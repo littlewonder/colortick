@@ -1,10 +1,25 @@
 var display = function () {
     "use strict";
-    var master, hours, minutes, seconds, dindex, day, ap;
+    var master, hours, minutes, seconds, dindex, day, ap, cv1, cv2, cv3, colorvar;
     master = new Date();
     hours = master.getHours();
     minutes = master.getMinutes();
     seconds = master.getSeconds();
+    cv1 = hours.toString(16);
+    cv2 = minutes.toString(16);
+    cv3 = seconds.toString(16);
+    if (cv1.length === 1) {
+        cv1 = "0" + cv1;
+    }
+    if (cv2.length === 1) {
+        cv2 = "0" + cv2;
+    }
+    if (cv3.length === 1) {
+        cv3 = "0" + cv3;
+    }
+    colorvar = "#" + cv1 + cv2 + cv3;
+    console.log(colorvar);
+    document.body.style.backgroundColor = colorvar;
     //setting AM and PM
     ap = "AM";
     if (hours > 12) {
@@ -29,30 +44,29 @@ var display = function () {
     //getting day and assinging value
     dindex = master.getDay();
     switch (dindex) {
-    case 1:
-        day = "Monday";
-        break;
-    case 2:
-        day = "Tuesday";
-        break;
-    case 3:
-        day = "Wednesday";
-        break;
-    case 4:
-        day = "Thursday";
-        break;
-    case 5:
-        day = "Friday";
-        break;
-    case 6:
-        day = "Saturday";
-        break;
-    case 0:
-        day = "Sunday";
-        break;
+        case 1:
+            day = "Monday";
+            break;
+        case 2:
+            day = "Tuesday";
+            break;
+        case 3:
+            day = "Wednesday";
+            break;
+        case 4:
+            day = "Thursday";
+            break;
+        case 5:
+            day = "Friday";
+            break;
+        case 6:
+            day = "Saturday";
+            break;
+        case 0:
+            day = "Sunday";
+            break;
     }
     //printing day
-    document.getElementById("day").innerHTML = day;
 };
 
 var tick = function () {
